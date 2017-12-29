@@ -91,6 +91,7 @@ public class InteractBlockListener
 
 						if (result == ResultType.SUCCESS)
 						{
+							AdminShop.getAdminShop().getLogger().info(player.getName() + " just sold " + shop.getItem().getQuantity() + " " + shop.getItem().getType().getTranslation().get() + " for " + price + " " + AdminShop.economyService.getDefaultCurrency().getPluralDisplayName().toPlain());
 							player.sendMessage(Text.builder().append(Text.of(TextColors.DARK_RED, "[AdminShop]: ", TextColors.GOLD, "You have just sold " + shop.getItem().getQuantity() + " " + shop.getItem().getType().getTranslation().get() + " for " + price + " ")).append(AdminShop.economyService.getDefaultCurrency().getPluralDisplayName()).build());
 							if (player.getItemInHand(HandTypes.MAIN_HAND).isPresent() && player.getItemInHand(HandTypes.MAIN_HAND).get().getType() == shop.getItem().getType() && player.getItemInHand(HandTypes.MAIN_HAND).get().getQuantity() == shop.getItem().getQuantity())
 							{
@@ -120,6 +121,8 @@ public class InteractBlockListener
 
 					if (result == ResultType.SUCCESS)
 					{
+						AdminShop.getAdminShop().getLogger().info(player.getName() + " just bought " + shop.getItem().getQuantity() + " " + shop.getItem().getType().getTranslation().get() + " for " + price + " " + AdminShop.economyService.getDefaultCurrency().getPluralDisplayName().toPlain());
+
 						player.sendMessage(Text.builder().append(Text.of(TextColors.DARK_RED, "[AdminShop]: ", TextColors.GOLD, "You have just bought " + shop.getItem().getQuantity() + " " + shop.getItem().getType().getTranslation().get() + " for " + price + " ")).append(AdminShop.economyService.getDefaultCurrency().getPluralDisplayName()).build());
 						player.getInventory().offer(shop.getItem().createStack());
 					}
